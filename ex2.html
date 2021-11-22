@@ -6,17 +6,31 @@
 </head>
 <body>
 
+<select name="category">
+    <option  >---</option>
+    <option value="http://192.168.0.195:5555/w22/1team.json" >한식</option>
+    <option value="http://192.168.0.215:5555/w22/2team.json">일식</option>
+    <option value="http://192.168.0.188:5555/w22/3team.json">프렌차이즈</option>
+</select>
 
+<select name="stores">
+</select>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(e){
 
-    $.getJSON('http://192.168.0.215:5555/w22/2team.json', function(arr) {
-        console.log(arr)
-    })
+    $("select[name='category']").on("change",function(e){
+        const url = $("select[name='category'] option:selected").val()
 
-})
+        if(!url){
+            return
+        }
+        $.getJSON(url, function(arr){
+            console.log(arr)
+        })
+    })
+})//reay
 
 </script>
 
