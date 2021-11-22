@@ -28,6 +28,13 @@ $(document).ready(function(e){
         }
         $.getJSON(url, function(arr){
             console.log(arr)
+            let str =''
+            for (let i = 0; i < arr.length ; i++) {
+                const {sno,sname} = arr[i]
+                console.log(sno, sname)
+                str += `<option>${sname}</option>`
+            }//end for
+            $("select[name='stores']").html(str)
         })
     })
 })//reay
